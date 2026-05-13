@@ -1,18 +1,7 @@
 {
   "version": 2,
-  "functions": {
-    "api/submit.js": {
-      "memory": 128,
-      "maxDuration": 10
-    }
-  },
   "builds": [
-    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "." } },
-    { "src": "api/*.js", "use": "@vercel/node" }
+    { "src": "*.html", "use": "@vercel/static" }
   ],
-  "routes": [
-    { "src": "/onboarding", "dest": "/onboarding.html" },
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/$1" }
-  ]
+  "cleanUrls": true
 }

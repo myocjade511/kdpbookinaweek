@@ -1,8 +1,0 @@
-{
-  "name": "kdpbookinaweek",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "build": "cp index.html index.html && cp onboarding.html onboarding.html"
-  }
-}
