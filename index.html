@@ -115,7 +115,11 @@ footer{padding:24px;text-align:center;color:#a1a1aa;font-size:.68rem;border-top:
 <div class="tag">Done-For-You Publishing &middot; 7 Days</div>
 <h1>You don't write a book.<br>You publish one.</h1>
 <p>One 30-minute call. Seven days later, your book is live on Amazon — written, designed, formatted, and uploaded. You bring the expertise. We handle the rest.</p>
-<div class="vsl" onclick="alert('VSL')"><div class="vsl-pl"><span>▶</span></div><div class="c"><div class="t">How the 7-day pipeline works</div><div class="d">3:42 walkthrough</div></div></div>
+<div class="vsl" onclick="document.getElementById('vidOverlay').style.display='flex'" style="cursor:pointer;transition:.15s">
+<div class="vsl-pl"><span>▶</span></div>
+<div class="c"><div class="t">How the 7-day pipeline works</div><div class="d">3:42 walkthrough · Discovery call to Amazon live</div></div>
+<div class="tag" style="color:#6366f1;font-size:.55rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#eef2ff;padding:4px 10px;border-radius:4px;margin:0">Watch</div>
+</div>
 <div class="hero-btns"><a href="/onboarding" class="btn btn-p btn-l">Publish Your Book →</a><a href="#process" class="btn btn-s">See How</a></div>
 <div class="hero-stats"><div><div class="n">40+</div><div class="l">Books published</div></div><div><div class="n">4.9</div><div class="l">Client rating</div></div><div><div class="n">7</div><div class="l">Days to launch</div></div><div><div class="n">30m</div><div class="l">Your time</div></div></div>
 </div>
@@ -217,4 +221,9 @@ footer{padding:24px;text-align:center;color:#a1a1aa;font-size:.68rem;border-top:
 <div class="micro">Free call &middot; You approve everything &middot; 7-day guarantee</div>
 </div></div></section>
 <footer>book//week &middot; Published in 7 Days</footer>
+<div id="vidOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;align-items:center;justify-content:center" onclick="this.style.display='none'">
+<div style="max-width:800px;width:90%;background:#000;border-radius:12px;overflow:hidden;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:#52525b;font-size:.9rem" onclick="event.stopPropagation()">
+<div style="text-align:center"><div style="font-size:3rem;margin-bottom:8px">▶</div><div>VSL video placeholder</div><div style="font-size:.75rem;color:#52525b;margin-top:4px">Replace with actual VSL.mp4 URL in the src attribute</div></div>
+</div>
+</div>
 </body></html>
