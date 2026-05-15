@@ -1,7 +1,14 @@
 {
   "version": 2,
   "builds": [
-    { "src": "*.html", "use": "@vercel/static" }
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "vsl/*.html", "use": "@vercel/static" },
+    { "src": "designs/*.html", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/vsl", "dest": "/vsl/index.html" },
+    { "src": "/vsl/(.*)", "dest": "/vsl/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
   ],
   "cleanUrls": true
 }
