@@ -85,4 +85,11 @@ footer{padding:30px 20px;text-align:center;color:#d6d3d1;font-size:11px}
 </div></div>
 <footer>Book in a Week &middot; Published in 7 Days &middot; 40+ Authors Published</footer>
 <div id="vo" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;align-items:center;justify-content:center" onclick="this.style.display='none'"><div style="max-width:740px;width:90%;background:#000;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:#555;border-radius:8px" onclick="event.stopPropagation()"><div style="text-align:center"><div style="font-size:3rem;margin-bottom:8px">▶</div><div>Replace with your VSL .mp4 URL</div><div style="font-size:11px;margin-top:4px;color:#444">VSL Production skill is ready to generate this</div></div></div></div>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+var stripe = Stripe('pk_test_51TXNzFGUDBzSXfRHJvLA16M93vyOCt47svlTawVa9Mz32S5oYkFPhGKpR22qcyas02uv7I1rb4tOVNzCjasyOCTg0052zf8Hy2');
+function buy(priceId) {
+  stripe.redirectToCheckout({ lineItems: [{price: priceId, quantity: 1}], mode: 'payment', successUrl: window.location.origin + '/onboarding?paid=true', cancelUrl: window.location.origin });
+}
+</script>
 </body></html>
