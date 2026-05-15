@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Book in a Week — Quiz</title><style>
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,sans-serif;background:#0f0f0f;color:#f0f0f0;line-height:1.6;font-size:14px}
+.w{max-width:640px;margin:0 auto;padding:0 20px}
+h1{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;line-height:1.1;margin-bottom:8px;letter-spacing:-.01em}
+h2{font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:700;line-height:1.2;margin-bottom:10px}
+p{color:#888;margin-bottom:12px;font-size:14px}
+section{padding:50px 0}
+.btn{display:inline-block;font-weight:600;padding:12px 28px;font-size:13px;text-decoration:none;cursor:pointer;border:none;transition:.15s;text-align:center}
+.btn-p{background:#fff;color:#0f0f0f!important}.btn-p:hover{background:#eee}
+.btn-o{background:transparent;color:#f0f0f0!important;border:1px solid #333}.btn-o:hover{border-color:#666}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,#0f0f0f 0%,transparent 100%)}
+.topbar .l{font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#888}
+.quiz-intro{padding:100px 0 60px;text-align:center}
+.quiz-intro .ey{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-bottom:8px}
+.q-grid{display:flex;flex-direction:column;gap:8px;margin:20px 0}
+.qc{background:#1a1a1a;border:1px solid #2a2a2a;padding:14px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:.15s}
+.qc:hover,.qc.s{border-color:#555;background:#222}.qc .c{width:32px;height:32px;border-radius:8px;border:1px solid #333;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:11px;color:#555}.qc:hover .c,.qc.s .c{border-color:#666;color:#fff}
+.qc .t{font-size:13px;font-weight:500}.qc .d{font-size:11px;color:#666}
+.bul{border-left:2px solid #333;padding:12px 16px;margin:16px 0;color:#aaa;font-size:13px;background:#111}
+.pr-box{border:1px solid #2a2a2a;border-radius:8px;padding:20px;margin:16px 0;background:linear-gradient(180deg,#1a1a1a,#0f0f0f)}
+.pr-box .pr{font-size:28px;font-weight:800;margin:4px 0}.pr-box .ps{font-size:12px;color:#666}
+footer{padding:40px 20px 60px;text-align:center;color:#333;font-size:12px}
+.progress{border-top:1px solid #1a1a1a;padding:12px 0;text-align:center;font-size:11px;color:#555}
+</style></head><body>
+<div class="topbar"><div class="l">BIW</div><a href="/onboarding" style="padding:6px 16px;background:#fff;color:#0f0f0f;border-radius:4px;font-size:11px;font-weight:600;text-decoration:none">Start</a></div>
+<div class="quiz-intro w">
+<div class="ey">2-Minute Assessment</div>
+<h1>Should you publish a book?</h1>
+<p>Answer 5 questions. We'll tell you if you're ready — and how to do it in 7 days.</p>
+</div>
+<section><div class="w"><div class="ey" style="color:#555">Your Expertise</div><h2>What best describes you?</h2><div class="q-grid">
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Coach / Consultant</div><div class="d">I sell my knowledge through calls or programs</div></div></div>
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Subject Matter Expert</div><div class="d">Deep knowledge, no formal practice</div></div></div>
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Speaker / Educator</div><div class="d">I present or teach regularly</div></div></div>
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Entrepreneur</div><div class="d">I want authority for my brand</div></div></div>
+</div></div></section>
+<section><div class="w"><div class="ey" style="color:#555">Your Audience</div><h2>Do you have people who follow you?</h2><div class="q-grid">
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Yes, 1K+ followers</div><div class="d">Email list or social following</div></div></div>
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Small but engaged</div><div class="d">A hundred or so loyal people</div></div></div>
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Not yet</div><div class="d">Starting from scratch</div></div></div>
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Corporate/internal</div><div class="d">I want industry credibility</div></div></div>
+</div></div></section>
+<section><div class="w"><div class="ey" style="color:#555">The Goal</div><h2>Why do you want a book?</h2><div class="q-grid">
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Lead generation</div><div class="d">A book as a business card</div></div></div>
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Speaking fees</div><div class="d">Author credibility = higher rates</div></div></div>
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Passive income</div><div class="d">Royalties + audiobook revenue</div></div></div>
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Legacy</div><div class="d">I want my knowledge to outlive me</div></div></div>
+</div></div></section>
+<section><div class="w"><div class="ey" style="color:#555">The Block</div><h2>What's stopped you so far?</h2><div class="q-grid">
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Time</div><div class="d">I never find the hours to write</div></div></div>
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Writing fear</div><div class="d">I don't think I can write well enough</div></div></div>
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Process overwhelm</div><div class="d">Cover, formatting, categories — too much</div></div></div>
+<div class="qc" onclick="this.classList.toggle('s')"><div class="c">✓</div><div><div class="t">Nothing now</div><div class="d">I'm finally ready to commit</div></div></div>
+</div></div></section>
+<section id="result"><div class="w" style="text-align:center">
+<div class="ey" style="color:#555">Your Assessment</div>
+<h2>You're a strong candidate.</h2>
+<p style="max-width:420px;margin:0 auto">Based on your answers, you have the expertise and motivation to be a published author. The only thing missing is the pipeline.</p>
+<div class="bul"><strong>Here's the reality:</strong> A DIY book takes 6-18 months. Ghostwriters take 2-4 months. Our pipeline delivers in 7 days. You approve everything. Nothing goes live without you.</div>
+<div class="pr-box"><div style="font-size:12px;color:#666;font-weight:500">Average client outcome</div><div class="pr">4.9★</div><div class="ps">Based on 40+ published books</div></div>
+<a href="/onboarding" class="btn btn-p" style="font-size:14px;padding:14px 40px">Publish Your Book →</a>
+<div style="color:#555;font-size:11px;margin-top:8px">One 30-min call · 7 days · No writing required</div>
+</div></section>
+<section><div class="w">
+<div class="ey" style="color:#555">Pricing</div><h2>Choose your tier.</h2>
+<div class="pr-box"><div class="pr">$1,500</div><div class="ps">Basic — 15K words, digital cover, formatting</div></div>
+<div class="pr-box" style="border-color:#555;background:linear-gradient(180deg,#222,#1a1a1a)"><div class="pr">$2,500</div><div class="ps">Premium — + Print cover, audiobook, copy edit, media kit <span style="color:#888;font-weight:600">Most popular</span></div></div>
+<div class="pr-box"><div class="pr">$4,000</div><div class="ps">Elite — + Landing page, Author Central, 30d ads</div></div>
+</div></section>
+<footer>Book in a Week · Published in 7 Days · Satisfaction Guaranteed</footer>
+</body></html>
