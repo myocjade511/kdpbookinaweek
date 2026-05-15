@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Book in a Week — Video Sales Letter</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;background:#1c1917;color:#fff;display:flex;flex-direction:column;align-items:center;min-height:100vh;overflow-x:hidden}
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap");
+
+/* Player chrome */
+.player{width:100%;max-width:740px;margin:20px auto;background:#000;border-radius:12px;overflow:hidden;position:relative;aspect-ratio:9/16}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 32px;opacity:0;transition:opacity .5s ease;background:#0a0a0a}
+.slide.active{opacity:1;z-index:2}
+.slide .tagline{font-family:'DM Serif Display',serif;font-size:clamp(1.2rem,6vw,2.2rem);font-weight:400;line-height:1.2;text-align:center;max-width:560px;color:#fff}
+.slide .tagline em{color:#a3a3a3;font-style:italic}
+.slide .big{font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,8vw,3rem);font-weight:400;line-height:1.1;text-align:center;max-width:600px;color:#fff}
+.slide .big.highlight{color:#fbbf24}
+.slide .big .dash{display:block;margin-top:8px;font-size:clamp(.9rem,3vw,1.2rem);color:#a3a3a3}
+.slide .stat{font-size:clamp(3rem,15vw,6rem);font-weight:700;color:#fbbf24;line-height:1;margin-bottom:8px}
+.slide .stat-label{font-size:clamp(.8rem,2.5vw,1rem);color:#a3a3a3;max-width:320px;text-align:center}
+.slide .point{font-size:clamp(1rem,4vw,1.5rem);text-align:center;max-width:500px;color:#d4d4d4;line-height:1.4}
+.slide .cta-text{font-size:clamp(1.2rem,5vw,2rem);font-family:'DM Serif Display',serif;text-align:center;color:#fbbf24;line-height:1.2;max-width:480px}
+.slide .sub{font-size:clamp(.75rem,2vw,.9rem);color:#6b7280;margin-top:12px;text-align:center}
+
+/* Bottom bar */
+.controls{width:100%;max-width:740px;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.controls .play-btn{width:44px;height:44px;border-radius:50%;background:#fbbf24;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.controls .play-btn span{font-size:18px;color:#1c1917;margin-left:2px}
+.controls .progress-bar{flex:1;height:4px;background:#262626;border-radius:2px;overflow:hidden;cursor:pointer}
+.controls .progress-bar .fill{height:100%;background:#fbbf24;border-radius:2px;transition:width .1s linear;width:0%}
+.controls .time{font-size:11px;color:#6b7280;min-width:48px;text-align:right}
+.controls .mute{background:none;border:none;color:#6b7280;cursor:pointer;font-size:16px;padding:4px}
+.controls .mute:hover{color:#fff}
+
+/* Header */
+.header{width:100%;max-width:740px;padding:16px;display:flex;justify-content:space-between;align-items:center}
+.header .logo{font-family:'DM Serif Display',serif;color:#a3a3a3;font-size:13px;letter-spacing:.02em}
+.header .logo strong{color:#fff}
+.header a{color:#fbbf24;font-size:12px;text-decoration:none;font-weight:500;padding:6px 14px;border:1px solid #fbbf24;border-radius:4px;transition:.15s}
+.header a:hover{background:#fbbf24;color:#1c1917}
+
+/* Waiting screen */
+.waiting{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;text-align:center;width:100%;max-width:740px;margin:auto;color:#a3a3a3}
+.waiting .icon{font-size:3rem;margin-bottom:16px;color:#fbbf24}
+.waiting h2{font-family:'DM Serif Display',serif;color:#fff;font-size:1.5rem;font-weight:400;margin-bottom:8px}
+.waiting p{font-size:13px;max-width:400px;line-height:1.6;color:#6b7280;margin-bottom:16px}
+.waiting .btn{display:inline-block;background:#fbbf24;color:#1c1917;font-weight:600;padding:12px 32px;border:none;border-radius:6px;cursor:pointer;font-size:13px;text-decoration:none}
+.waiting .btn:hover{background:#f59e0b}
+
+/* Privacy note */
+.privacy{position:fixed;bottom:12px;left:0;right:0;text-align:center;font-size:10px;color:#6b7280;padding:8px}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo"><strong>Book</strong> // Week</div>
+  <a href="/">← Back to Page</a>
+</div>
+
+<!-- Waiting / Start Screen -->
+<div id="waiting" class="waiting">
+  <div class="icon">🎬</div>
+  <h2>Watch how it works</h2>
+  <p>I'll walk you through exactly how your book gets written, designed, and published on Amazon in 7 days — with only 30 minutes of your time.</p>
+  <button class="btn" onclick="startVSL()">▶ Play Video (3:24)</button>
+  <div style="margin-top:8px;font-size:11px;color:#6b7280">Uses browser speech — no downloads needed</div>
+</div>
+
+<!-- Player (hidden until play) -->
+<div id="player" class="player" style="display:none">
+  <div id="slides"></div>
+</div>
+
+<div id="controls" class="controls" style="display:none">
+  <button class="play-btn" id="playBtn" onclick="togglePlay()"><span id="playIcon">⏸</span></button>
+  <div class="progress-bar" onclick="seek(event)"><div class="fill" id="progressFill"></div></div>
+  <div class="time" id="timeDisplay">0:00 / 3:24</div>
+  <button class="mute" onclick="toggleMute()" id="muteBtn">🔊</button>
+</div>
+
+<div class="privacy">Speech is generated locally in your browser. Nothing is recorded.</div>
+
+<script>
+// ──────── VSL SLIDES ────────
+const slides = [
+  { big: 'You want to write a book.<br><span class="dash">But you never have the time.</span>', dur: 4.0 },
+  { big: 'You\'ve started a dozen times.<br><span class="dash">Maybe saved a few notes.</span>', dur: 3.0 },
+  { big: 'But that expertise you have?<br><span class="dash">It stays locked inside you.</span>', dur: 3.5 },
+  { tagline: 'I write your book in <em>7 days</em>.<br>You get the <em>credit</em>.', dur: 3.0 },
+  { tagline: 'I\'m Jordan Mitchell.<br><em>40+ books ghostwritten.</em>', dur: 2.5 },
+  { point: 'One 30-minute call. Your stories. Your frameworks. Your voice. I turn that conversation into a finished book.', dur: 5.0 },
+  { big: 'Not "inspired by" you.<br><span class="dash">Exactly. Like. You.</span>', dur: 3.0 },
+  { big: 'Your team will think<br>you wrote it overnight.', dur: 3.0 },
+  { big: 'Here\'s the timeline:<br><span class="dash">Day 1 — Discovery call (30 min)</span>', dur: 3.0 },
+  { point: 'Day 2-3 — I write the manuscript while you go about your life.', dur: 3.5 },
+  { point: 'Day 4 — You review the draft. Approve covers. I make any edits.', dur: 3.5 },
+  { point: 'Day 5 — Professional formatting for Kindle and paperback.', dur: 3.0 },
+  { point: 'Day 6 — Amazon keyword strategy and category optimization.', dur: 3.0 },
+  { big: 'Day 7 — Your book is <span class="highlight">live on Amazon</span>.', dur: 3.0 },
+  { tagline: 'Seven days.<br>From idea to <em>Amazon</em>.', dur: 3.0 },
+  { big: '"Will it sound like me?"<br><span class="dash">I study how you speak. Your phrases, your stories, your voice.</span>', dur: 5.0 },
+  { big: '"What if I don\'t like it?"<br><span class="dash">You approve everything. Outline. Draft. Cover. Nothing goes live without you.</span>', dur: 5.0 },
+  { big: '"Is 15,000 words enough?"<br><span class="dash">It\'s the Amazon sweet spot. Long enough to deliver. Short enough to finish.</span>', dur: 4.5 },
+  { big: '"What\'s the investment?"', dur: 2.0 },
+  { stat: '$1,500', 'stat-label': 'Basic — 15K words, ebook cover, formatting, KDP upload', dur: 3.5 },
+  { stat: '$2,500', 'stat-label': 'Premium — Add print cover, AI audiobook, copy edit, media kit', dur: 3.5 },
+  { stat: '$4,000', 'stat-label': 'Elite — Add landing page, Author Central, 30-day ads management', dur: 3.5 },
+  { tagline: 'Compare that to a ghostwriter<br>who takes <em>4 months</em>.', dur: 3.0 },
+  { big: 'Sarah J. closed a $3,500 retainer<br><span class="dash">the week her book launched.</span>', dur: 4.0 },
+  { big: 'Marcus T. tripled speaking fees<br><span class="dash">once "Author" was in his bio.</span>', dur: 3.5 },
+  { big: 'Elena R. makes $700/month<br><span class="dash">from her audiobook — passive income.</span>', dur: 4.0 },
+  { tagline: 'You don\'t need an audience.<br>You don\'t need <em>writing experience</em>.', dur: 3.0 },
+  { point: 'You just need expertise and 30 minutes of your time. I handle everything else.', dur: 4.0 },
+  { big: 'Every author says the same thing:<br><span class="dash">"I wish I\'d done this years ago."</span>', dur: 4.0 },
+  { big: 'A book is a $10,000 business card.<br><span class="dash">A speaking fee multiplier. A retainer magnet.</span>', dur: 4.0 },
+  { cta_text: 'You\'ll never have more time<br>than you have right now.', dur: 3.0 },
+  { cta_text: 'Let me write your book.', dur: 2.5 },
+  { cta_text: 'Seven days from now...<br>...you could be an author.', dur: 3.5 },
+  { big: 'Book your free call.<br><span class="dash" style="font-size:1rem;color:#fbbf24">Click below to get started →</span>', dur: 4.0 },
+];
+
+// ──────── PLAYER STATE ────────
+let currentSlide = 0;
+let isPlaying = false;
+let isMuted = false;
+let timer = null;
+let slideStartTime = 0;
+let elapsed = 0;
+const totalDuration = slides.reduce((s, sld) => s + sld.dur, 0);
+
+// Build slide DOM
+function buildSlides() {
+  const container = document.getElementById('slides');
+  slides.forEach((s, i) => {
+    const div = document.createElement('div');
+    div.className = 'slide' + (i === 0 ? ' active' : '');
+    div.id = 'slide-' + i;
+    if (s.big) div.innerHTML = `<div class="big${s.big.includes('highlight') ? ' highlight' : ''}">${s.big}</div>`;
+    else if (s.tagline) div.innerHTML = `<div class="tagline">${s.tagline}</div>`;
+    else if (s.point) div.innerHTML = `<div class="point">${s.point}</div>`;
+    else if (s.stat) div.innerHTML = `<div class="stat">${s.stat}</div><div class="stat-label">${s['stat-label'] || ''}</div>`;
+    else if (s.cta_text) div.innerHTML = `<div class="cta-text">${s.cta_text}</div>`;
+    container.appendChild(div);
+  });
+}
+
+function showSlide(index) {
+  document.querySelectorAll('.slide').forEach((s, i) => {
+    s.classList.toggle('active', i === index);
+  });
+  currentSlide = index;
+}
+
+function advanceSlide() {
+  if (currentSlide < slides.length - 1) {
+    showSlide(currentSlide + 1);
+    slideStartTime = Date.now();
+    clearTimeout(timer);
+    timer = setTimeout(advanceSlide, slides[currentSlide].dur * 1000);
+  } else {
+    stopPlayback();
+  }
+  updateTime();
+  updateProgress();
+}
+
+function startPlayback() {
+  isPlaying = true;
+  document.getElementById('playIcon').textContent = '⏸';
+  slideStartTime = Date.now();
+  if (currentSlide === 0) showSlide(0);
+  timer = setTimeout(advanceSlide, slides[currentSlide].dur * 1000);
+  updateTime();
+  updateProgress();
+}
+
+function stopPlayback() {
+  isPlaying = false;
+  document.getElementById('playIcon').textContent = '▶';
+  clearTimeout(timer);
+}
+
+function togglePlay() {
+  if (isPlaying) {
+    stopPlayback();
+    elapsed += (Date.now() - slideStartTime) / 1000;
+  } else {
+    startPlayback();
+  }
+}
+
+function toggleMute() {
+  isMuted = !isMuted;
+  document.getElementById('muteBtn').textContent = isMuted ? '🔇' : '🔊';
+  speechSynthesis.cancel();
+}
+
+function seek(e) {
+  const rect = e.currentTarget.getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  const target = pct * totalDuration;
+  
+  // Find which slide this time falls into
+  let acc = 0;
+  for (let i = 0; i < slides.length; i++) {
+    acc += slides[i].dur;
+    if (acc >= target) {
+      stopPlayback();
+      showSlide(i);
+      slideStartTime = Date.now();
+      elapsed = target - (acc - slides[i].dur);
+      // Resume if was playing
+      break;
+    }
+  }
+  updateTime();
+  updateProgress();
+}
+
+function updateTime() {
+  const now = Date.now();
+  const current = isPlaying ? (now - slideStartTime) / 1000 : 0;
+  const total = slides.slice(0, currentSlide).reduce((s, sld) => s + sld.dur, 0) + current;
+  const remaining = Math.max(0, totalDuration - total);
+  const fmt = (sec) => {
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  };
+  document.getElementById('timeDisplay').textContent = `${fmt(total)} / ${fmt(totalDuration)}`;
+}
+
+function updateProgress() {
+  const now = Date.now();
+  const current = isPlaying ? (now - slideStartTime) / 1000 : 0;
+  const total = slides.slice(0, currentSlide).reduce((s, sld) => s + sld.dur, 0) + current;
+  const pct = Math.min(100, (total / totalDuration) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+// Auto-update time/progress while playing
+setInterval(() => {
+  if (isPlaying) {
+    updateTime();
+    updateProgress();
+  }
+}, 100);
+
+// ──────── SPEECH SYNTHESIS ────────
+function speakSlide(index) {
+  if (isMuted) return;
+  window.speechSynthesis.cancel();
+  
+  const s = slides[index];
+  let text = '';
+  if (s.big) text = s.big.replace(/<br\s*\/?>/g, '. ').replace(/<span[^>]*>/g, '').replace(/<\/span>/g, '');
+  else if (s.tagline) text = s.tagline.replace(/<br\s*\/?>/g, '. ').replace(/<em>/g, '').replace(/<\/em>/g, '');
+  else if (s.point) text = s.point;
+  else if (s.cta_text) text = s.cta_text.replace(/<br\s*\/?>/g, '. ').replace(/<span[^>]*>/g, '').replace(/<\/span>/g, '');
+  else if (s.stat) text = s.stat + '. ' + (s['stat-label'] || '');
+  
+  if (!text) return;
+  
+  // Clean up HTML entities
+  text = text.replace(/&mdash;/g, '—').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+  
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 1.05;
+  utterance.pitch = 1.0;
+  utterance.volume = isMuted ? 0 : 1;
+  
+  // Try to use a good voice
+  const voices = window.speechSynthesis.getVoices();
+  const preferred = voices.find(v => v.lang.startsWith('en') && v.name.includes('Google')) 
+    || voices.find(v => v.lang.startsWith('en-US'))
+    || voices.find(v => v.lang.startsWith('en'));
+  if (preferred) utterance.voice = preferred;
+  
+  window.speechSynthesis.speak(utterance);
+}
+
+// Override advanceSlide to speak
+const origAdvance = advanceSlide;
+advanceSlide = function() {
+  speakSlide(currentSlide);
+  origAdvance();
+};
+
+// Also speak on manual navigation
+const origShow = showSlide;
+showSlide = function(index) {
+  origShow(index);
+  if (isPlaying) speakSlide(index);
+};
+
+// ──────── START ────────
+function startVSL() {
+  document.getElementById('waiting').style.display = 'none';
+  document.getElementById('player').style.display = 'block';
+  document.getElementById('controls').style.display = 'flex';
+  
+  // Load voices (async)
+  if (window.speechSynthesis) {
+    window.speechSynthesis.getVoices(); // prime
+    setTimeout(() => window.speechSynthesis.getVoices(), 100);
+  }
+  
+  showSlide(0);
+  startPlayback();
+  speakSlide(0);
+}
+
+buildSlides();
+</script>
+</body>
+</html>
