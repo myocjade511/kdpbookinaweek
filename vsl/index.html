@@ -2,317 +2,333 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Book in a Week — Video Sales Letter</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Watch — Book in a Week in 7 Days</title>
 <style>
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap");
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;background:#1c1917;color:#fff;display:flex;flex-direction:column;align-items:center;min-height:100vh;overflow-x:hidden}
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap");
+html,body{height:100%;background:#0a0a0a;color:#fff;font-family:Inter,sans-serif;overflow:hidden}
 
-/* Player chrome */
-.player{width:100%;max-width:740px;margin:20px auto;background:#000;border-radius:12px;overflow:hidden;position:relative;aspect-ratio:9/16}
-.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 32px;opacity:0;transition:opacity .5s ease;background:#0a0a0a}
-.slide.active{opacity:1;z-index:2}
-.slide .tagline{font-family:'DM Serif Display',serif;font-size:clamp(1.2rem,6vw,2.2rem);font-weight:400;line-height:1.2;text-align:center;max-width:560px;color:#fff}
-.slide .tagline em{color:#a3a3a3;font-style:italic}
-.slide .big{font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,8vw,3rem);font-weight:400;line-height:1.1;text-align:center;max-width:600px;color:#fff}
-.slide .big.highlight{color:#fbbf24}
-.slide .big .dash{display:block;margin-top:8px;font-size:clamp(.9rem,3vw,1.2rem);color:#a3a3a3}
-.slide .stat{font-size:clamp(3rem,15vw,6rem);font-weight:700;color:#fbbf24;line-height:1;margin-bottom:8px}
-.slide .stat-label{font-size:clamp(.8rem,2.5vw,1rem);color:#a3a3a3;max-width:320px;text-align:center}
-.slide .point{font-size:clamp(1rem,4vw,1.5rem);text-align:center;max-width:500px;color:#d4d4d4;line-height:1.4}
-.slide .cta-text{font-size:clamp(1.2rem,5vw,2rem);font-family:'DM Serif Display',serif;text-align:center;color:#fbbf24;line-height:1.2;max-width:480px}
-.slide .sub{font-size:clamp(.75rem,2vw,.9rem);color:#6b7280;margin-top:12px;text-align:center}
+/* ──────── LAYOUT ──────── */
+.wrap{display:flex;height:100vh;width:100%}
 
-/* Bottom bar */
-.controls{width:100%;max-width:740px;padding:12px 16px;display:flex;align-items:center;gap:12px}
-.controls .play-btn{width:44px;height:44px;border-radius:50%;background:#fbbf24;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.controls .play-btn span{font-size:18px;color:#1c1917;margin-left:2px}
-.controls .progress-bar{flex:1;height:4px;background:#262626;border-radius:2px;overflow:hidden;cursor:pointer}
-.controls .progress-bar .fill{height:100%;background:#fbbf24;border-radius:2px;transition:width .1s linear;width:0%}
-.controls .time{font-size:11px;color:#6b7280;min-width:48px;text-align:right}
-.controls .mute{background:none;border:none;color:#6b7280;cursor:pointer;font-size:16px;padding:4px}
-.controls .mute:hover{color:#fff}
+/* Sidebar: dim info */
+.info{width:320px;padding:40px 32px;display:flex;flex-direction:column;justify-content:center;background:#0d0d0d;border-right:1px solid #1a1a1a;flex-shrink:0}
+.info .logo{font-family:'DM Serif Display',serif;font-size:15px;color:#525252;margin-bottom:32px;letter-spacing:.02em}
+.info .logo strong{color:#fff}
+.info h2{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;margin-bottom:8px;line-height:1.2}
+.info .sub{color:#737373;font-size:13px;line-height:1.6;margin-bottom:20px}
+.info .author{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.info .author .av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#262626,#404040);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff}
+.info .author .nm{font-weight:600;font-size:12px}.info .author .rl{font-size:10px;color:#525252}
+.info .stats{display:flex;gap:20px;margin-bottom:24px}
+.info .stats .v{font-size:20px;font-weight:700;line-height:1}.info .stats .l{font-size:10px;color:#525252;margin-top:2px}
+.info .btn{display:inline-flex;align-items:center;gap:8px;background:#fbbf24;color:#0a0a0a;font-weight:700;padding:12px 28px;border:none;border-radius:6px;font-size:13px;cursor:pointer;text-decoration:none;transition:.1s}
+.info .btn:hover{background:#f59e0b}
+.info .btn-out{background:transparent;border:1px solid #262626;color:#a3a3a3;font-size:11px;padding:8px 16px;border-radius:4px;text-decoration:none;margin-left:8px}
+.info .btn-out:hover{border-color:#525252;color:#fff}
 
-/* Header */
-.header{width:100%;max-width:740px;padding:16px;display:flex;justify-content:space-between;align-items:center}
-.header .logo{font-family:'DM Serif Display',serif;color:#a3a3a3;font-size:13px;letter-spacing:.02em}
-.header .logo strong{color:#fff}
-.header a{color:#fbbf24;font-size:12px;text-decoration:none;font-weight:500;padding:6px 14px;border:1px solid #fbbf24;border-radius:4px;transition:.15s}
-.header a:hover{background:#fbbf24;color:#1c1917}
+/* Main: player area */
+.player{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;position:relative}
 
-/* Waiting screen */
-.waiting{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;text-align:center;width:100%;max-width:740px;margin:auto;color:#a3a3a3}
-.waiting .icon{font-size:3rem;margin-bottom:16px;color:#fbbf24}
-.waiting h2{font-family:'DM Serif Display',serif;color:#fff;font-size:1.5rem;font-weight:400;margin-bottom:8px}
-.waiting p{font-size:13px;max-width:400px;line-height:1.6;color:#6b7280;margin-bottom:16px}
-.waiting .btn{display:inline-block;background:#fbbf24;color:#1c1917;font-weight:600;padding:12px 32px;border:none;border-radius:6px;cursor:pointer;font-size:13px;text-decoration:none}
-.waiting .btn:hover{background:#f59e0b}
+/* The screen */
+.screen{width:100%;max-width:860px;background:#000;border-radius:12px;overflow:hidden;position:relative;aspect-ratio:16/9;border:1px solid #1a1a1a}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 32px;opacity:0;transition:opacity .6s ease;background:#000}
+.slide.on{opacity:1;z-index:2}
 
-/* Privacy note */
-.privacy{position:fixed;bottom:12px;left:0;right:0;text-align:center;font-size:10px;color:#6b7280;padding:8px}
+.slide .b{font-family:'DM Serif Display',serif;font-size:clamp(1.4rem,3.2vw,2.6rem);font-weight:400;line-height:1.2;text-align:center;max-width:80%;color:#fff}
+.slide .b .ds{display:block;margin-top:10px;font-size:clamp(.8rem,1.6vw,1.2rem);color:#737373}
+.slide .b .hl{color:#fbbf24}
+.slide .t{font-family:'DM Serif Display',serif;font-size:clamp(1.1rem,2.6vw,2rem);font-weight:400;text-align:center;color:#fff;max-width:75%}
+.slide .t em{color:#fbbf24;font-style:normal}
+.slide .p{font-size:clamp(.85rem,1.5vw,1.15rem);text-align:center;color:#a3a3a3;max-width:65%;line-height:1.5}
+.slide .st{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:700;color:#fbbf24;line-height:1}
+.slide .sl{font-size:clamp(.7rem,1.2vw,.95rem);color:#737373;text-align:center;margin-top:6px;max-width:70%}
+.slide .ct{font-size:clamp(1.2rem,2.8vw,2rem);font-family:'DM Serif Display',serif;text-align:center;color:#fbbf24;line-height:1.3;max-width:70%}
+
+/* Controls bar */
+.bar{display:flex;align-items:center;gap:14px;width:100%;max-width:860px;margin-top:14px;padding:0 4px}
+.bar .pb{width:40px;height:40px;border-radius:50%;background:#fbbf24;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.1s}
+.bar .pb:hover{background:#f59e0b}
+.bar .pb span{font-size:15px;color:#0a0a0a;margin-left:1px}
+.bar .pr{flex:1;height:4px;background:#1a1a1a;border-radius:2px;overflow:hidden;cursor:pointer}
+.bar .pr .fl{height:100%;background:#fbbf24;border-radius:2px;width:0%;transition:width .2s}
+.bar .tm{font-size:11px;color:#525252;min-width:80px;text-align:right;white-space:nowrap}
+.bar .mu{background:none;border:none;color:#525252;cursor:pointer;font-size:16px;padding:4px;transition:.1s}
+.bar .mu:hover{color:#fff}
+.bar .st{font-size:10px;color:#525252;padding:3px 8px;border:1px solid #1a1a1a;border-radius:3px;cursor:pointer;transition:.1s}
+.bar .st:hover{color:#a3a3a3;border-color:#333}
+
+/* Step indicator */
+.steps{display:flex;gap:4px;margin-top:12px;max-width:860px;width:100%}
+.steps .d{flex:1;height:2px;background:#1a1a1a;border-radius:1px;transition:background .3s}
+.steps .d.do{background:#fbbf24}
+
+/* Start overlay */
+.overlay{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.85);cursor:pointer}
+.overlay .bb{width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:.15s}
+.overlay .bb span{font-size:28px;color:#0a0a0a;margin-left:4px}
+.overlay:hover .bb{transform:scale(1.05)}
+.overlay .l1{font-family:'DM Serif Display',serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:#fff;margin-bottom:6px}
+.overlay .l2{font-size:12px;color:#525252}
+.overlay .hd{display:none}
+
+@media(max-width:860px){
+.info{display:none}
+.player{padding:20px}
+.screen{border-radius:8px}
+.slide .b{max-width:92%;font-size:clamp(1.1rem,5vw,1.8rem)}
+.slide .t{max-width:90%}
+.slide .p{max-width:85%}
+.slide .b .ds{font-size:clamp(.7rem,3vw,.9rem)}
+}
 </style>
 </head>
 <body>
-<div class="header">
-  <div class="logo"><strong>Book</strong> // Week</div>
-  <a href="/">← Back to Page</a>
+<div class="wrap">
+
+<!-- Sidebar -->
+<div class="info">
+<div class="logo"><strong>Book</strong> // Week</div>
+<h2>Watch how it works</h2>
+<div class="sub">I'll walk you through the exact process — from a 30-minute call to a finished book on Amazon. No fluff.</div>
+<div class="author">
+<div class="av">JM</div>
+<div><div class="nm">Jordan Mitchell</div><div class="rl">Ghostwriter · 40+ books</div></div>
+</div>
+<div class="stats">
+<div><div class="v">32</div><div class="l">slides</div></div>
+<div><div class="v">3:24</div><div class="l">duration</div></div>
+<div><div class="v">1</div><div class="l">conversation</div></div>
+</div>
+<a href="/onboarding" class="btn">Book Your Free Call →</a>
+<a href="/" class="btn-out">← Back</a>
 </div>
 
-<!-- Waiting / Start Screen -->
-<div id="waiting" class="waiting">
-  <div class="icon">🎬</div>
-  <h2>Watch how it works</h2>
-  <p>I'll walk you through exactly how your book gets written, designed, and published on Amazon in 7 days — with only 30 minutes of your time.</p>
-  <button class="btn" onclick="startVSL()">▶ Play Video (3:24)</button>
-  <div style="margin-top:8px;font-size:11px;color:#6b7280">Uses browser speech — no downloads needed</div>
+<!-- Player -->
+<div class="player">
+<div class="screen" id="screen">
+<div class="overlay" id="overlay" onclick="start()">
+<div class="bb"><span>▶</span></div>
+<div class="l1">Watch the presentation</div>
+<div class="l2">Browser speech narration · 32 slides · 3.5 minutes</div>
+</div>
+<div id="slides"></div>
 </div>
 
-<!-- Player (hidden until play) -->
-<div id="player" class="player" style="display:none">
-  <div id="slides"></div>
+<div class="bar">
+<button class="pb" onclick="toggle()"><span id="playI">▶</span></button>
+<div class="pr" onclick="seek(event)"><div class="fl" id="prog"></div></div>
+<div class="tm" id="timer">0:00 / 3:24</div>
+<button class="mu" onclick="mute()" id="muteB">🔊</button>
+<button class="st" onclick="skip()">Skip →</button>
 </div>
 
-<div id="controls" class="controls" style="display:none">
-  <button class="play-btn" id="playBtn" onclick="togglePlay()"><span id="playIcon">⏸</span></button>
-  <div class="progress-bar" onclick="seek(event)"><div class="fill" id="progressFill"></div></div>
-  <div class="time" id="timeDisplay">0:00 / 3:24</div>
-  <button class="mute" onclick="toggleMute()" id="muteBtn">🔊</button>
+<div class="steps" id="steps"></div>
 </div>
 
-<div class="privacy">Speech is generated locally in your browser. Nothing is recorded.</div>
+</div>
 
 <script>
-// ──────── VSL SLIDES ────────
-const slides = [
-  { big: 'You want to write a book.<br><span class="dash">But you never have the time.</span>', dur: 4.0 },
-  { big: 'You\'ve started a dozen times.<br><span class="dash">Maybe saved a few notes.</span>', dur: 3.0 },
-  { big: 'But that expertise you have?<br><span class="dash">It stays locked inside you.</span>', dur: 3.5 },
-  { tagline: 'I write your book in <em>7 days</em>.<br>You get the <em>credit</em>.', dur: 3.0 },
-  { tagline: 'I\'m Jordan Mitchell.<br><em>40+ books ghostwritten.</em>', dur: 2.5 },
-  { point: 'One 30-minute call. Your stories. Your frameworks. Your voice. I turn that conversation into a finished book.', dur: 5.0 },
-  { big: 'Not "inspired by" you.<br><span class="dash">Exactly. Like. You.</span>', dur: 3.0 },
-  { big: 'Your team will think<br>you wrote it overnight.', dur: 3.0 },
-  { big: 'Here\'s the timeline:<br><span class="dash">Day 1 — Discovery call (30 min)</span>', dur: 3.0 },
-  { point: 'Day 2-3 — I write the manuscript while you go about your life.', dur: 3.5 },
-  { point: 'Day 4 — You review the draft. Approve covers. I make any edits.', dur: 3.5 },
-  { point: 'Day 5 — Professional formatting for Kindle and paperback.', dur: 3.0 },
-  { point: 'Day 6 — Amazon keyword strategy and category optimization.', dur: 3.0 },
-  { big: 'Day 7 — Your book is <span class="highlight">live on Amazon</span>.', dur: 3.0 },
-  { tagline: 'Seven days.<br>From idea to <em>Amazon</em>.', dur: 3.0 },
-  { big: '"Will it sound like me?"<br><span class="dash">I study how you speak. Your phrases, your stories, your voice.</span>', dur: 5.0 },
-  { big: '"What if I don\'t like it?"<br><span class="dash">You approve everything. Outline. Draft. Cover. Nothing goes live without you.</span>', dur: 5.0 },
-  { big: '"Is 15,000 words enough?"<br><span class="dash">It\'s the Amazon sweet spot. Long enough to deliver. Short enough to finish.</span>', dur: 4.5 },
-  { big: '"What\'s the investment?"', dur: 2.0 },
-  { stat: '$1,500', 'stat-label': 'Basic — 15K words, ebook cover, formatting, KDP upload', dur: 3.5 },
-  { stat: '$2,500', 'stat-label': 'Premium — Add print cover, AI audiobook, copy edit, media kit', dur: 3.5 },
-  { stat: '$4,000', 'stat-label': 'Elite — Add landing page, Author Central, 30-day ads management', dur: 3.5 },
-  { tagline: 'Compare that to a ghostwriter<br>who takes <em>4 months</em>.', dur: 3.0 },
-  { big: 'Sarah J. closed a $3,500 retainer<br><span class="dash">the week her book launched.</span>', dur: 4.0 },
-  { big: 'Marcus T. tripled speaking fees<br><span class="dash">once "Author" was in his bio.</span>', dur: 3.5 },
-  { big: 'Elena R. makes $700/month<br><span class="dash">from her audiobook — passive income.</span>', dur: 4.0 },
-  { tagline: 'You don\'t need an audience.<br>You don\'t need <em>writing experience</em>.', dur: 3.0 },
-  { point: 'You just need expertise and 30 minutes of your time. I handle everything else.', dur: 4.0 },
-  { big: 'Every author says the same thing:<br><span class="dash">"I wish I\'d done this years ago."</span>', dur: 4.0 },
-  { big: 'A book is a $10,000 business card.<br><span class="dash">A speaking fee multiplier. A retainer magnet.</span>', dur: 4.0 },
-  { cta_text: 'You\'ll never have more time<br>than you have right now.', dur: 3.0 },
-  { cta_text: 'Let me write your book.', dur: 2.5 },
-  { cta_text: 'Seven days from now...<br>...you could be an author.', dur: 3.5 },
-  { big: 'Book your free call.<br><span class="dash" style="font-size:1rem;color:#fbbf24">Click below to get started →</span>', dur: 4.0 },
-];
+(function(){
+// ──────── SLIDES ────────
+var SD=[];
+function addB(t,d){SD.push({b:t,d:d})}
+function addT(t,d){SD.push({t:t,d:d})}
+function addP(t,d){SD.push({p:t,d:d})}
+function addST(v,l,d){SD.push({st:v,sl:l,d:d})}
+function addC(t,d){SD.push({c:t,d:d})}
 
-// ──────── PLAYER STATE ────────
-let currentSlide = 0;
-let isPlaying = false;
-let isMuted = false;
-let timer = null;
-let slideStartTime = 0;
-let elapsed = 0;
-const totalDuration = slides.reduce((s, sld) => s + sld.dur, 0);
+addB('You want to write a book.<span class="ds">But you never have the time.</span>',3.5);
+addB('You have the expertise.<span class="ds">It stays locked inside you.</span>',3);
+addT('I write your book in <em>7 days</em>.<br>You get the <em>credit</em>.',3.5);
+addT('One <em>30-minute call</em>.<br>I turn it into a finished book.',3);
+addP('Your stories. Your frameworks. Your voice. I study how you speak and deliver a draft that reads like you dictated it. Only cleaner.',5);
+addT('Not "inspired by" you.<br><em>Exactly. Like. You.</em>',2.5);
+addB('Your team will think<span class="ds">you wrote it overnight.</span>',2.5);
+addB('Day 1<span class="ds">30-minute discovery call</span>',2.5);
+addB('Days 2-3<span class="ds">I write the manuscript</span>',2.5);
+addB('Day 4<span class="ds">You review. I edit. Approve covers.</span>',3);
+addB('Day 5<span class="ds">Kindle + paperback formatting</span>',2.5);
+addB('Day 6<span class="ds">Amazon keywords + categories</span>',2.5);
+addB('Day 7<span class="ds hl">Your book is live on Amazon.</span>',3);
+addT('Seven days.<br>From idea to <em>Amazon</em>.',2.5);
+addB('"Will it sound like me?"<span class="ds">I study your voice. Your phrases. Your stories. Nothing goes live without your approval.</span>',4.5);
+addB('"Is 15,000 words enough?"<span class="ds">It\'s the Amazon sweet spot. Short enough to finish, long enough to deliver value.</span>',4);
+addB('"What\'s the investment?"',1.5);
+addST('$1,500','Basic — ebook cover, formatting, KDP upload',3);
+addST('$2,500','Premium — print cover, AI audiobook, copy edit, media kit',3);
+addST('$4,000','Elite — landing page, Author Central setup, 30-day ads',3);
+addT('Compare to a ghostwriter<br>who takes <em>4 months</em>.',2.5);
+addB('Sarah J. closed a $3,500 retainer<span class="ds">the week her book launched.</span>',3.5);
+addB('Marcus T. tripled speaking fees<span class="ds">once "Author" was in his bio.</span>',3);
+addB('Elena R. makes $700/month<span class="ds">from her audiobook alone.</span>',3);
+addT('You don\'t need an audience.<br>You don\'t need <em>writing experience</em>.',2.5);
+addP('You just need expertise and 30 minutes of your time. I handle the writing, editing, cover, formatting, and Amazon upload.',5);
+addB('Every author says the same:<span class="ds">"I wish I\'d done this years ago."</span>',3);
+addC('A book is a $10,000 business card.',2.5);
+addC('Let me write your book.',2.5);
+addC('Seven days from now...<br>you could be an author.',3);
+addB('Ready? <span class="ds hl" style="font-size:1rem">Book your free call above →</span>',5);
 
-// Build slide DOM
-function buildSlides() {
-  const container = document.getElementById('slides');
-  slides.forEach((s, i) => {
-    const div = document.createElement('div');
-    div.className = 'slide' + (i === 0 ? ' active' : '');
-    div.id = 'slide-' + i;
-    if (s.big) div.innerHTML = `<div class="big${s.big.includes('highlight') ? ' highlight' : ''}">${s.big}</div>`;
-    else if (s.tagline) div.innerHTML = `<div class="tagline">${s.tagline}</div>`;
-    else if (s.point) div.innerHTML = `<div class="point">${s.point}</div>`;
-    else if (s.stat) div.innerHTML = `<div class="stat">${s.stat}</div><div class="stat-label">${s['stat-label'] || ''}</div>`;
-    else if (s.cta_text) div.innerHTML = `<div class="cta-text">${s.cta_text}</div>`;
-    container.appendChild(div);
-  });
+// ──────── STATE ────────
+var ci=0, pl=false, mt=false, tm=null;
+var TT=SD.reduce(function(a,x){return a+x.d},0);
+
+function build(){
+ var c=document.getElementById('slides');
+ var s=document.getElementById('steps');
+ SD.forEach(function(sl,i){
+  var d=document.createElement('div');
+  d.className='slide'+(i===0?' on':'');
+  d.id='sl-'+i;
+  if(sl.b)d.innerHTML='<div class="b">'+sl.b+'</div>';
+  else if(sl.t)d.innerHTML='<div class="t">'+sl.t+'</div>';
+  else if(sl.p)d.innerHTML='<div class="p">'+sl.p+'</div>';
+  else if(sl.st)d.innerHTML='<div class="st">'+sl.st+'</div><div class="sl">'+sl.sl+'</div>';
+  else if(sl.c)d.innerHTML='<div class="ct">'+sl.c+'</div>';
+  c.appendChild(d);
+  // step dots
+  var st=document.createElement('div');
+  st.className='d'+(i===0?' do':'');
+  st.id='st-'+i;
+  s.appendChild(st);
+ });
 }
 
-function showSlide(index) {
-  document.querySelectorAll('.slide').forEach((s, i) => {
-    s.classList.toggle('active', i === index);
-  });
-  currentSlide = index;
+function show(i){
+ document.querySelectorAll('.slide').forEach(function(x,j){x.classList.toggle('on',j===i)});
+ document.querySelectorAll('.steps .d').forEach(function(x,j){x.classList.toggle('do',j<=i)});
+ ci=i;
 }
 
-function advanceSlide() {
-  if (currentSlide < slides.length - 1) {
-    showSlide(currentSlide + 1);
-    slideStartTime = Date.now();
-    clearTimeout(timer);
-    timer = setTimeout(advanceSlide, slides[currentSlide].dur * 1000);
-  } else {
-    stopPlayback();
-  }
-  updateTime();
-  updateProgress();
+function advance(){
+ if(ci<SD.length-1){
+  show(ci+1);
+  clearTimeout(tm);
+  tm=setTimeout(advance,SD[ci].d*1000);
+ } else {
+  pl=false;
+  document.getElementById('playI').textContent='\u25b6';
+ }
+ updateT();
+ updateP();
 }
 
-function startPlayback() {
-  isPlaying = true;
-  document.getElementById('playIcon').textContent = '⏸';
-  slideStartTime = Date.now();
-  if (currentSlide === 0) showSlide(0);
-  timer = setTimeout(advanceSlide, slides[currentSlide].dur * 1000);
-  updateTime();
-  updateProgress();
+function speak(i){
+ if(mt)return;
+ window.speechSynthesis.cancel();
+ var sl=SD[i];
+ var txt='';
+ if(sl.b)txt=sl.b.replace(/<[^>]+>/g,' ').replace(/\\s+/g,' ').trim();
+ else if(sl.t)txt=sl.t.replace(/<[^>]+>/g,' ').replace(/\\s+/g,' ').trim();
+ else if(sl.p)txt=sl.p;
+ else if(sl.st)txt=sl.st+' '+sl.sl;
+ else if(sl.c)txt=sl.c.replace(/<[^>]+>/g,' ').replace(/\\s+/g,' ').trim();
+ if(!txt)return;
+ var u=new SpeechSynthesisUtterance(txt);
+ u.rate=1.1;
+ u.volume=mt?0:1;
+ var v=speechSynthesis.getVoices();
+ var p=v.find(function(x){return x.lang.startsWith('en-US')})||v.find(function(x){return x.lang.startsWith('en')});
+ if(p)u.voice=p;
+ window.speechSynthesis.speak(u);
 }
 
-function stopPlayback() {
-  isPlaying = false;
-  document.getElementById('playIcon').textContent = '▶';
-  clearTimeout(timer);
+function start(){
+ document.getElementById('overlay').classList.add('hd');
+ pl=true;
+ document.getElementById('playI').textContent='\u23f8';
+ build();
+ show(0);
+ speak(0);
+ clearTimeout(tm);
+ // Delay first advance slightly so speech can start
+ setTimeout(function(){tm=setTimeout(advance,SD[0].d*1000)},300);
 }
 
-function togglePlay() {
-  if (isPlaying) {
-    stopPlayback();
-    elapsed += (Date.now() - slideStartTime) / 1000;
-  } else {
-    startPlayback();
-  }
-}
-
-function toggleMute() {
-  isMuted = !isMuted;
-  document.getElementById('muteBtn').textContent = isMuted ? '🔇' : '🔊';
-  speechSynthesis.cancel();
-}
-
-function seek(e) {
-  const rect = e.currentTarget.getBoundingClientRect();
-  const pct = (e.clientX - rect.left) / rect.width;
-  const target = pct * totalDuration;
-  
-  // Find which slide this time falls into
-  let acc = 0;
-  for (let i = 0; i < slides.length; i++) {
-    acc += slides[i].dur;
-    if (acc >= target) {
-      stopPlayback();
-      showSlide(i);
-      slideStartTime = Date.now();
-      elapsed = target - (acc - slides[i].dur);
-      // Resume if was playing
-      break;
-    }
-  }
-  updateTime();
-  updateProgress();
-}
-
-function updateTime() {
-  const now = Date.now();
-  const current = isPlaying ? (now - slideStartTime) / 1000 : 0;
-  const total = slides.slice(0, currentSlide).reduce((s, sld) => s + sld.dur, 0) + current;
-  const remaining = Math.max(0, totalDuration - total);
-  const fmt = (sec) => {
-    const m = Math.floor(sec / 60);
-    const s = Math.floor(sec % 60);
-    return `${m}:${s.toString().padStart(2, '0')}`;
-  };
-  document.getElementById('timeDisplay').textContent = `${fmt(total)} / ${fmt(totalDuration)}`;
-}
-
-function updateProgress() {
-  const now = Date.now();
-  const current = isPlaying ? (now - slideStartTime) / 1000 : 0;
-  const total = slides.slice(0, currentSlide).reduce((s, sld) => s + sld.dur, 0) + current;
-  const pct = Math.min(100, (total / totalDuration) * 100);
-  document.getElementById('progressFill').style.width = pct + '%';
-}
-
-// Auto-update time/progress while playing
-setInterval(() => {
-  if (isPlaying) {
-    updateTime();
-    updateProgress();
-  }
-}, 100);
-
-// ──────── SPEECH SYNTHESIS ────────
-function speakSlide(index) {
-  if (isMuted) return;
+function toggle(){
+ if(!pl && ci===0 && document.querySelector('.slide.on')===null){
+  start();return;
+ }
+ if(pl){
+  pl=false;
+  clearTimeout(tm);
+  document.getElementById('playI').textContent='\u25b6';
   window.speechSynthesis.cancel();
-  
-  const s = slides[index];
-  let text = '';
-  if (s.big) text = s.big.replace(/<br\s*\/?>/g, '. ').replace(/<span[^>]*>/g, '').replace(/<\/span>/g, '');
-  else if (s.tagline) text = s.tagline.replace(/<br\s*\/?>/g, '. ').replace(/<em>/g, '').replace(/<\/em>/g, '');
-  else if (s.point) text = s.point;
-  else if (s.cta_text) text = s.cta_text.replace(/<br\s*\/?>/g, '. ').replace(/<span[^>]*>/g, '').replace(/<\/span>/g, '');
-  else if (s.stat) text = s.stat + '. ' + (s['stat-label'] || '');
-  
-  if (!text) return;
-  
-  // Clean up HTML entities
-  text = text.replace(/&mdash;/g, '—').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-  
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.rate = 1.05;
-  utterance.pitch = 1.0;
-  utterance.volume = isMuted ? 0 : 1;
-  
-  // Try to use a good voice
-  const voices = window.speechSynthesis.getVoices();
-  const preferred = voices.find(v => v.lang.startsWith('en') && v.name.includes('Google')) 
-    || voices.find(v => v.lang.startsWith('en-US'))
-    || voices.find(v => v.lang.startsWith('en'));
-  if (preferred) utterance.voice = preferred;
-  
-  window.speechSynthesis.speak(utterance);
+ } else {
+  pl=true;
+  document.getElementById('playI').textContent='\u23f8';
+  speak(ci);
+  clearTimeout(tm);
+  tm=setTimeout(advance,SD[ci].d*1000);
+ }
 }
 
-// Override advanceSlide to speak
-const origAdvance = advanceSlide;
-advanceSlide = function() {
-  speakSlide(currentSlide);
-  origAdvance();
-};
+function mute(){
+ mt=!mt;
+ document.getElementById('muteB').textContent=mt?'\ud83d\udd07':'\ud83d\udd0a';
+ window.speechSynthesis.cancel();
+}
 
-// Also speak on manual navigation
-const origShow = showSlide;
-showSlide = function(index) {
-  origShow(index);
-  if (isPlaying) speakSlide(index);
-};
-
-// ──────── START ────────
-function startVSL() {
-  document.getElementById('waiting').style.display = 'none';
-  document.getElementById('player').style.display = 'block';
-  document.getElementById('controls').style.display = 'flex';
-  
-  // Load voices (async)
-  if (window.speechSynthesis) {
-    window.speechSynthesis.getVoices(); // prime
-    setTimeout(() => window.speechSynthesis.getVoices(), 100);
+function skip(){
+ if(ci<SD.length-1){
+  clearTimeout(tm);
+  show(ci+1);
+  if(pl){
+   speak(ci);
+   tm=setTimeout(advance,SD[ci].d*1000);
   }
-  
-  showSlide(0);
-  startPlayback();
-  speakSlide(0);
+  updateT();updateP();
+ }
 }
 
-buildSlides();
+function seek(e){
+ var r=e.currentTarget.getBoundingClientRect();
+ var pct=(e.clientX-r.left)/r.width;
+ var acc=0;
+ for(var i=0;i<SD.length;i++){
+  acc+=SD[i].d;
+  if(acc>=pct*TT){
+   clearTimeout(tm);
+   show(i);
+   if(pl){
+    speak(i);
+    tm=setTimeout(advance,SD[i].d*1000);
+   }
+   break;
+  }
+ }
+ updateT();updateP();
+}
+
+function updateT(){
+ var ct=SD.slice(0,ci).reduce(function(a,x){return a+x.d},0);
+ var F=function(e){var m=Math.floor(e/60),s=Math.floor(e%60);return m+':'+(s<10?'0':'')+s};
+ document.getElementById('timer').textContent=F(ct)+' / '+F(TT);
+}
+
+function updateP(){
+ var ct=SD.slice(0,ci).reduce(function(a,x){return a+x.d},0);
+ document.getElementById('prog').style.width=Math.min(100,(ct/TT)*100)+'%';
+}
+
+setInterval(function(){if(pl){updateT();updateP()}},200);
+
+// Prime voices
+if(window.speechSynthesis){
+ window.speechSynthesis.getVoices();
+ setTimeout(function(){window.speechSynthesis.getVoices()},200);
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown',function(e){
+ if(e.code==='Space'||e.code==='Enter'){e.preventDefault();toggle()}
+ if(e.code==='ArrowRight'){e.preventDefault();skip()}
+ if(e.code==='KeyM'){e.preventDefault();mute()}
+});
+
+})();
 </script>
 </body>
 </html>
