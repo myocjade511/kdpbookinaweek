@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Book in a Week – Bold Editorial</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap");
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,sans-serif;background:#fafaf8;color:#1c1917;line-height:1.65}
+h1,h2{font-family:"Playfair Display",serif}
+h1{font-size:clamp(2.6rem,5vw,4.2rem);font-weight:700;line-height:1.05;letter-spacing:-.02em}
+h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:600;line-height:1.15;margin-bottom:12px}
+.nav{padding:20px 24px;border-bottom:1px solid #e7e5e4;display:flex;justify-content:space-between;align-items:center;background:#fafaf8;position:sticky;top:0;z-index:100}
+.nav-l{font-family:"Playfair Display",serif;font-weight:700;font-size:1rem;letter-spacing:.04em}
+.nav-r{display:flex;gap:24px;align-items:center}
+.nav-r a{color:#78716c;font-size:.8rem;font-weight:500;text-decoration:none}.nav-r a:hover{color:#1c1917}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;padding:14px 32px;border-radius:6px;font-size:.9rem;border:none;cursor:pointer;text-decoration:none;transition:.15s}
+.btn-p{background:#1c1917;color:#fff!important}.btn-p:hover{background:#44403c}
+.btn-o{background:transparent;color:#1c1917!important;border:1px solid #d6d3d1}.btn-o:hover{border-color:#1c1917}
+.mw{max-width:1000px;margin:0 auto;padding:0 24px}
+.mwn{max-width:660px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+.tag{font-size:.55rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#a8a29e;margin-bottom:8px}
+p{color:#78716c;font-size:.9rem;line-height:1.7;margin-bottom:16px}
+.hero{padding:100px 24px 80px;border-bottom:1px solid #e7e5e4}
+.hero .mw{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero p{font-size:1rem;max-width:420px}
+.hero-stats{display:flex;gap:32px;margin-top:28px}
+.hero-stats .n{font-size:1.3rem;font-weight:700}
+.hero-stats .l{font-size:.68rem;color:#a8a29e;margin-top:2px}
+.hero-stats div{border-right:1px solid #e7e5e4;padding-right:24px}
+.hero-stats div:last-child{border:none}
+.hero-img{background:#f5f5f4;border:1px solid #e7e5e4;padding:28px;box-shadow:12px 12px 0 rgba(0,0,0,.03)}
+.hero-img .q{font-family:"Playfair Display",serif;font-style:italic;font-size:1.05rem;color:#1c1917;line-height:1.4;margin-bottom:16px}
+.hero-img .q:before{content:"\201c";font-size:2.5rem;color:#d6d3d1;display:block;margin-bottom:-8px}
+.grd{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e7e5e4;margin:24px 0}
+.gc{background:#fff;padding:24px}
+.gc .n{font-family:"Playfair Display",serif;font-size:2rem;font-weight:700;color:#e7e5e4;margin-bottom:4px}
+.gc h4{font-size:.8rem;font-weight:600;margin-bottom:2px}
+.gc p{font-size:.72rem;color:#a8a29e;margin:0}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;background:#e7e5e4;margin:24px 0}
+.step{background:#fff;padding:20px 14px}
+.step .d{font-size:.5rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#a8a29e;margin-bottom:4px}
+.step h4{font-size:.78rem;font-weight:600;margin-bottom:2px}
+.step p{font-size:.65rem;color:#a8a29e;margin:0}
+.tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:#e7e5e4}
+.tc{background:#fff;padding:24px}
+.tc .q{font-family:"Playfair Display",serif;font-style:italic;color:#1c1917;font-size:.85rem;line-height:1.5;margin-bottom:10px}
+.tc .au{font-weight:600;font-size:.82rem}
+.tc .sr{font-size:.68rem;color:#a8a29e;margin-top:2px}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:#e7e5e4}
+.pc{background:#fff;padding:28px 24px;display:flex;flex-direction:column}
+.pc.f{background:#fafaf8;position:relative}
+.pc.f:before{content:"Best Value";position:absolute;top:-1px;right:24px;font-size:.45rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:#1c1917;color:#fff;padding:3px 10px}
+.pc .pr{font-family:"Playfair Display",serif;font-size:2rem;font-weight:700;margin:6px 0 2px}
+.pc .ps{font-size:.65rem;color:#a8a29e;margin-bottom:14px}
+.pc ul{list-style:none;margin:8px 0 20px;flex:1}
+.pc ul li{color:#78716c;font-size:.75rem;padding:4px 0;border-bottom:1px solid #f5f5f4;display:flex;align-items:center;gap:8px}
+.pc ul li:before{content:"\2713";color:#78716c}
+.faq{border-top:1px solid #e7e5e4;margin-top:20px}
+.faq>div{border-bottom:1px solid #e7e5e4;padding:14px 0;cursor:pointer}
+.faq .qt{font-weight:600;font-size:.85rem;display:flex;justify-content:space-between}
+.faq .qt:after{content:"+";color:#d6d3d1}
+.faq .open .qt:after{content:"\2013"}
+.faq .an{display:none;color:#78716c;font-size:.8rem;margin-top:6px}
+.cta{background:#1c1917;padding:60px 24px;text-align:center}
+.cta h2{color:#fff}.cta p{color:#a8a29e;max-width:420px;margin:0 auto 24px}
+.cta .btn-p{background:#fff;color:#1c1917!important}
+footer{padding:24px;text-align:center;color:#d6d3d1;font-size:.68rem;border-top:1px solid #e7e5e4}
+@media(max-width:800px){.hero .mw{grid-template-columns:1fr;gap:32px}.grd{grid-template-columns:1fr}}
+</style></head><body>
+<div class="nav"><div class="nav-l">BIW</div><div class="nav-r"><a href="#pricing">Pricing</a><a href="/onboarding" class="btn btn-p" style="padding:8px 20px;font-size:.78rem">Start</a></div></div>
+<div class="hero"><div class="mw"><div>
+<div class="tag">Done-For-You Publishing</div>
+<h1>Seven days.<br>One book.<br>Zero writing.</h1>
+<p>A published book on Amazon. Written in your voice. Designed, formatted, live. You show up for one 30-minute call.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><a href="/onboarding" class="btn btn-p">Publish Your Book →</a><a href="#process" class="btn btn-o">How It Works</a></div>
+<div class="hero-stats"><div><div class="n">40+</div><div class="l">Books</div></div><div><div class="n">4.9</div><div class="l">Rating</div></div><div><div class="n">7</div><div class="l">Days</div></div><div><div class="n">30m</div><div class="l">Your time</div></div></div>
+</div><div class="hero-img"><div class="q">I had been trying to write my book for two years. They delivered in a week.</div><div>&mdash; Sarah J., Real Estate Coach</div><div style="margin-top:16px;padding-top:14px;border-top:1px solid #e7e5e4;font-size:.72rem;color:#a8a29e;line-height:1.5"><em>"The draft sounded exactly like me. Speaking fees tripled."</em> &mdash; Marcus T.</div></div></div></div>
+<section id="process"><div class="mw"><div class="tag">The Gap</div>
+<h2>You have the knowledge. You need the book.</h2>
+<p>Every month without a published book is lost credibility, lost speaking fees, lost inbound leads. The writing bottleneck is the only thing in your way &mdash; and we remove it.</p>
+<div class="grd">
+<div class="gc"><div class="n">01</div><h4>Knowledge trapped</h4><p>Your frameworks have no shelf life outside a book.</p></div>
+<div class="gc"><div class="n">02</div><h4>Ghostwriters take months</h4><p>And leave you without a cover, format, or strategy.</p></div>
+<div class="gc"><div class="n">03</div><h4>Writing never happens</h4><p>Too busy delivering expertise to package it.</p></div>
+<div class="gc"><div class="n">04</div><h4>Competitors get found</h4><p>Amazon search sends leads to other authors.</p></div>
+</div></div></section>
+<section style="background:#f5f5f4;border-top:1px solid #e7e5e4;border-bottom:1px solid #e7e5e4"><div class="mw" style="text-align:center">
+<div class="tag">The Pipeline</div>
+<h2>7 days to published.</h2>
+<p style="max-width:420px;margin:0 auto">Show up for one 30-minute call. Approve as we go.</p>
+<div class="steps">
+<div class="step"><div class="d">Day 1</div><h4>Discovery</h4><p>Interview + outline</p></div>
+<div class="step"><div class="d">Day 2-3</div><h4>Manuscript</h4><p>15K-20K words</p></div>
+<div class="step"><div class="d">Day 4</div><h4>Edit + Cover</h4><p>Copy edit, 3 concepts</p></div>
+<div class="step"><div class="d">Day 5</div><h4>Format</h4><p>EPUB, PDF, print</p></div>
+<div class="step"><div class="d">Day 6</div><h4>Strategy</h4><p>Keywords, categories</p></div>
+<div class="step"><div class="d">Day 7</div><h4>Published</h4><p>Live on Amazon</p></div>
+</div>
+<p style="background:#fff;border:1px solid #e7e5e4;padding:14px;margin-top:16px;font-size:.85rem"><strong>Your time: 30 minutes.</strong> <span style="color:#a8a29e">One call. Done.</span></p>
+</div></section>
+<section><div class="mw"><div class="tag">Results</div><h2>Clients who trusted the pipeline.</h2>
+<div class="tg">
+<div class="tc"><div class="q">"Closed a $3,500 retainer the same week my book went live. Paid for itself."</div><div class="au">Sarah J.</div><div class="sr">Real Estate Coach</div></div>
+<div class="tc"><div class="q">"My speaking fees tripled after adding Author to my bio. The process felt effortless."</div><div class="au">Marcus T.</div><div class="sr">Leadership Consultant</div></div>
+<div class="tc"><div class="q">"$2,100 in quarterly audiobook revenue from a single 30-minute call."</div><div class="au">Elena R.</div><div class="sr">Career Consultant</div></div>
+</div></div></section>
+<section style="background:#f5f5f4;border-top:1px solid #e7e5e4;border-bottom:1px solid #e7e5e4"><div class="mwn">
+<div class="tag">Objections</div><h2>Common concerns, addressed.</h2>
+<div class="faq">
+<div onclick="this.classList.toggle('open')"><div class="qt">I don't have time</div><div class="an">One 30-minute call. We schedule around you.</div></div>
+<div onclick="this.classList.toggle('open')"><div class="qt">Ghostwriters burned me before</div><div class="an">Google Docs. Every chapter visible. 7-day delivery.</div></div>
+<div onclick="this.classList.toggle('open')"><div class="qt">Will it sound like me?</div><div class="an">Your stories. Your examples. You approve everything.</div></div>
+<div onclick="this.classList.toggle('open')"><div class="qt">I don't have an audience</div><div class="an">Amazon's algorithm surfaces your book for you.</div></div>
+<div onclick="this.classList.toggle('open')"><div class="qt">What if I hate it?</div><div class="an">You approve every milestone. Full refund if needed.</div></div>
+<div onclick="this.classList.toggle('open')"><div class="qt">Is 15K words enough?</div><div class="an">Amazon sweet spot. Readers finish these books.</div></div>
+</div></div></section>
+<section id="pricing"><div class="mw" style="text-align:center">
+<div class="tag">Investment</div><h2>Three tiers. One outcome: published.</h2>
+<p style="max-width:420px;margin:0 auto 20px">Same 7-day pipeline. Different deliverables depth.</p>
+<div class="pg" style="text-align:left">
+<div class="pc"><h4>Basic</h4><div class="pr">$1,500</div><div class="ps">One-time</div><ul><li>15K-20K manuscript</li><li>Digital ebook cover</li><li>EPUB + PDF formatting</li><li>Keyword + category strategy</li><li>Amazon blurb copy</li><li>KDP upload support</li></ul><a href="/onboarding" class="btn btn-o" style="width:100%;justify-content:center">Get Started</a></div>
+<div class="pc f"><h4>Premium</h4><div class="pr">$2,500</div><div class="ps">One-time</div><ul><li>Everything in Basic</li><li>Print cover (front+spine+back)</li><li>AI-narrated audiobook</li><li>Professional copy edit</li><li>Launch email sequence</li><li>Media kit</li></ul><a href="/onboarding" class="btn btn-p" style="width:100%;justify-content:center">Get Started</a></div>
+<div class="pc"><h4>Elite</h4><div class="pr">$4,000</div><div class="ps">One-time</div><ul><li>Everything in Premium</li><li>Custom author landing page</li><li>Amazon Author Central setup</li><li>30 days Ads management</li><li>Social media kit</li><li>Priority support</li></ul><a href="/onboarding" class="btn btn-o" style="width:100%;justify-content:center">Get Started</a></div>
+</div></div></section>
+<section style="background:#1c1917;padding:40px 24px;text-align:center"><div class="mw"><h2 style="color:#fff;font-size:1.4rem">Satisfaction Guaranteed</h2><p style="color:#a8a29e;max-width:440px;margin:0 auto">You approve every milestone. Nothing goes live without your sign-off.</p></div></section>
+<div class="cta"><div class="mw">
+<div style="font-size:.55rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#a8a29e;margin-bottom:8px">Your Next Move</div>
+<h2>You've had the idea long enough.<br>Let's make it a book.</h2>
+<p>One call. Seven days. Published on Amazon.</p>
+<a href="/onboarding" class="btn btn-p" style="font-size:1rem;padding:16px 48px">Start Your Book Now →</a>
+<div style="color:#78716c;font-size:.68rem;margin-top:10px">Free call · You approve everything · 7-day guarantee</div>
+</div></div>
+<footer>BIW · Published in 7 Days</footer>
+</body></html>
